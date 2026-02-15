@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "Zenith — Browser Agent",
+  "version": "0.1.0",
+  "description": "Privacy-native browser agent for Zen Browser. Local LLM inference, zero cloud.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "zenith-agent@local",
+      "strict_min_version": "115.0"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs"
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "icons/zenith-16.png",
+      "48": "icons/zenith-48.png",
+      "128": "icons/zenith-128.png"
+    }
+  },
+  "sidebar_action": {
+    "default_title": "Zenith Agent",
+    "default_panel": "index.html",
+    "default_icon": "icons/zenith-48.png"
+  },
+  "background": {
+    "scripts": ["src/background.ts"],
+    "type": "module"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+L",
+        "mac": "Command+K"
+      },
+      "description": "Open Zenith Intent Bar"
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  },
+  "icons": {
+    "16": "icons/zenith-16.png",
+    "48": "icons/zenith-48.png",
+    "128": "icons/zenith-128.png"
+  }
+}

@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Zen-native CSS variables — the extension will inherit these from the
+ * browser chrome when loaded as a sidebar.  Fallbacks are defined in
+ * tailwind.config.js → theme.extend.colors.zen.
+ */
+:root {
+  --zen-bg: #1a1a2e;
+  --zen-surface: #16213e;
+  --zen-primary: #0f3460;
+  --zen-accent: #e94560;
+  --zen-text: #eaeaea;
+  --zen-muted: #8a8a9a;
+  --zen-border: #2a2a4a;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Subtle scrollbar matching Zen's aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--zen-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--zen-border);
+  border-radius: 3px;
+}

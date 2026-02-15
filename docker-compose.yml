@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  zenith-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: zenith-backend
+    ports:
+      - "8765:8765"
+    environment:
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - OLLAMA_MODEL=gemma3
+      - ZEN_BROWSER_PATH=  # leave empty — Docker uses Playwright's Firefox
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+  # Ollama runs natively on the host for GPU access.
+  # This service is a convenience stub — disable if you already run Ollama.
+  # ollama:
+  #   image: ollama/ollama:latest
+  #   ports:
+  #     - "11434:11434"
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #           - capabilities: [gpu]
+  #   volumes:
+  #     - ollama_data:/root/.ollama
+
+# volumes:
+#   ollama_data:
